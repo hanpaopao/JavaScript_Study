@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>Array</title>
+  </head>
+  <body>
+    <div class="output">
+      <ul>
+
+      </ul>
+      <p></p>
+    </div>
+
+    <div class="search">
+      <div>
+        <input type="text" />
+        <button>Search</button>
+      </div>
+      <ul>
+
+      </ul>
+    </div>
+
+    <script>
+
+      // 创建数组
+      let shoping = ['bread', 'milk', 'cheese'];
+      console.log(shoping);
+      let sequence = [1, 2, 3, 5, 8, 13];
+      let random = ['tree', 795, [0, 1, 2]];
+      console.log(sequence);
+      console.log(random);
+
+      // 访问和修改数组元素
+      console.log(shoping[0] + '---' + shoping[1]);
+      shoping[0] = 'tahini';
+      console.log(shoping[0] + '---' + shoping[1]);
+      console.log(random[2][2]);
+
+      // 获取数组长度
+      console.log(sequence.length);
+      // 循环
+      console.log('循环开始------');
+      for (let i = 0; i < sequence.length; i++) {
+        console.log(sequence[i]);
+      }
+      console.log('循环结束------');
+
+      // 字符串和数组之间切换
+      let myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+      let myArray = myData.split(',');
+      console.log(myArray);
+      console.log(myArray[myArray.length-1]);
+      let myNewString = myArray.join('-');
+      console.log(myNewString);
+      console.log(myArray.toString());
+
+      // 增加和删除数组项
+
+      console.log(myArray.length);
+      console.log(myArray.push('baidu'));
+      console.log(myArray.push('aliyun', 'tencent'));
+      console.log(myArray);
+
+      let removeItem = myArray.pop();
+      console.log(removeItem);
+      console.log(myArray);
+      console.log(myArray.pop());
+
+      // 案例：打印这些产品
+      const list = document.querySelector('.output ul');
+      const totalBox = document.querySelector('.output p');
+      let total = 0;
+      list.innerHTML = '';
+      totalBox.textContent = '';
+
+      let products = ['Underpants:6.99',
+                      'Socks:5.99',
+                      'T-shirt:14.99',
+                      'Trousers:31.99',
+                      'Shoes:23.99'];
+
+      for (let i = 0; i < products.length; i++) {
+        let subArray = products[i].split(':');
+        let name = subArray[0];
+        let price = Number(subArray[1]);
+        total += price;
+
+        let listItem = document.createElement('li');
+        listItem.textContent = name + ' ----- $' + price;
+        list.appendChild(listItem);
+        totalBox.textContent = 'Total: $' + total.toFixed(2);
+      }
+
+      // 前5个搜索
+      const searchList = document.querySelector('.search ul');
+      const searchInput = document.querySelector('.search input');
+      const searchButton = document.querySelector('.search button');
+
+      searchList.innerHTML = '';
+      let searchHistory = [];
+
+      searchButton.onclick = function() {
+        if (searchInput.value !== '') {
+
+          console.log('有内容');
+          searchList.innerHTML = '';
+          searchHistory.unshift(searchInput.value);
+          console.log(searchHistory);
+          for (let i = 0; i < searchHistory.length; i++) {
+            let result = searchHistory[i];
+            
+            let listItem = document.createElement('li');
+            listItem.textContent = result;
+            searchList.appendChild(listItem);
+          }
+
+          if ( searchHistory.length >= 5) {
+            searchHistory.pop();
+          }
+
+          searchInput.value = '';
+          searchInput.focus();
+
+        } else {
+          console.log('无内容');
+        }
+      }
+
+
+    </script>
+  </body>
+</html>
