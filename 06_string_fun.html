@@ -5,6 +5,13 @@
     <title>String_Function</title>
   </head>
   <body>
+
+    <div class="output">
+      <ul>
+
+      </ul>
+    </div>
+
     <script>
       
       let browserType = 'Mozilla';
@@ -15,6 +22,77 @@
       // 返回字符串中任意字符
       console.log('第一个位置的字符是：' + browserType[0]);
       console.log('最后一个位置的字符是：' + browserType[browserType.length-1]);
+
+      // indexOf()-查找字符的位置
+      console.log(browserType.indexOf('zilla')); // 返回2
+      console.log(browserType.indexOf('vailla')); // 返回 -1
+
+      if (browserType.indexOf('Mozilla') !== -1) {
+        console.log('包含Mozilla');
+      }
+
+      // slice()-提取字符串的一部分(第一个参数是起始位置，第二个参数是结束位置)
+      console.log(browserType.slice(0,3));
+      console.log(browserType.slice(1,3));
+      console.log(browserType.slice(1));
+      console.log(browserType.slice(1,-1));
+
+      // toUpperCase()-toLowerCase()-转换大小写
+      console.log(browserType.toUpperCase());
+      console.log(browserType);
+      console.log(browserType.toLowerCase());
+
+      // 替换字符串的某部分
+      console.log(browserType.replace('lla', 'LLA'));
+      console.log(browserType);
+
+      // 练习：过滤问候留言
+      let list = document.querySelector('.output ul');
+      list.innerHTML = '';
+      let greetimgs = ['Happy Birthday!',
+                        'Merry Christmas my love',
+                        'A happy Christmas to all the family',
+                        'You\'re all I want for Christmas',
+                        'Get well soon'];
+      for (let i = 0; i <greetimgs.length; i++) {
+        let input = greetimgs[i];
+        if (greetimgs[i].indexOf('Christmas') !== -1) {
+          let result = input;
+          let listItem = document.createElement('li');
+          listItem.textContent = result;
+          list.appendChild(listItem);
+        }
+      }
+
+      // 大写修正
+      let cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOL'];
+      for (let x = 0; x < cities.length; x++) {
+        let city = cities[x];
+        let lowerCity = city.toLowerCase();
+        let firstCity = lowerCity.slice(0,1);
+        let result = firstCity.toUpperCase() + lowerCity.slice(1);
+        let listItem = document.createElement('li');
+        listItem.textContent = result;
+        list.appendChild(listItem);
+      }
+
+      // 得到新的字符串
+
+      var stations = ['MAN675847583748sjt567654;Manchester Piccadilly',
+                      'GNF576746573fhdg4737dh4;Greenfield',
+                      'LIV5hg65hd737456236dch46dg4;Liverpool Lime Street',
+                      'SYB4f65hf75f736463;Stalybridge',
+                      'HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield'];
+      for (let i = 0; i < stations.length; i++) {
+        var input = stations[i];
+        var code = input.slice(0,3);
+        var semiC = input.indexOf(';');
+        var name = input.slice(semiC + 1);
+        var result = code + ';' + name;
+        var listItem = document.createElement('li');
+        listItem.textContent = result;
+        list.appendChild(listItem);
+      }
 
     </script>
   </body>
