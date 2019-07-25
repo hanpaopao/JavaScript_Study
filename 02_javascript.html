@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>what_is_javascript</title>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        function createParagraph() {
+          let para = document.createElement('p');
+          para.textContent =  '你点击了按钮';
+          document.body.appendChild(para);
+        }
+
+        const buttons = document.querySelectorAll('button');
+
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', createParagraph);
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <button>点击一下</button><br />
+    <button>点击一下</button><br />
+    <button>点击一下</button><br />
+    <button>点击一下</button><br />
+  </body>
+</html>
