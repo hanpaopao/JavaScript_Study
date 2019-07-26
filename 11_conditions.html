@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>条件语句</title>
+    <style>
+      .show-day {
+        overflow: hidden;
+      }
+      .show-day li {
+        float: left;
+        list-style: none;
+        width: 100px;
+        height: 50px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- else if -->
+    <label for="weather">现在天气</label>
+    <select id="weather">
+      <option value="">请选择</option>
+      <option value="sunny">sunny</option>
+      <option value="rainy">rainy</option>
+      <option value="snowing">snowing</option>
+    </select>
+    <p></p>
+
+    <!-- 三元运算符 -->
+    <label for="theme">Select theme:</label>
+    <select id="theme">
+      <option value="white">white</option>
+      <option value="black">black</option>
+    </select>
+
+    <div></div>
+    <!-- 一个简单的日历 -->
+    <label for="month">选择月份</label>
+    <select id="month">
+      <option value="1">1月</option>
+      <option value="2">2月</option>
+      <option value="3">3月</option>
+      <option value="4">4月</option>
+      <option value="5">5月</option>
+      <option value="6">6月</option>
+      <option value="7">7月</option>
+      <option value="8">8月</option>
+      <option value="9">9月</option>
+      <option value="10">10月</option>
+      <option value="11">11月</option>
+      <option value="12">12月</option>
+    </select>
+
+    <ul class="show-day">
+
+    </ul>
+
+    <!-- 更多颜色 -->
+    <label for="more-theme"></label>
+    <select id="more-theme">
+      <option value="white">white</option>
+      <option value="black">black</option>
+      <option value="green">green</option>
+    </select>
+
+    <h1>this is my theme</h1>
+
+
+    <script>
+
+      let shoppingDone = false;
+      let childAllowance;
+
+      if (shoppingDone === true) {
+        childAllowance = 10;
+      } else {
+        childAllowance = 5;
+      }
+      console.log(childAllowance);
+
+      const select = document.getElementById('weather');
+      const para = document.querySelector('p');
+
+      select.addEventListener('change', setWeather);
+
+      function setWeather() {
+        let choice = select.value;
+
+        if (choice === 'sunny') {
+          para.textContent = 'sunny';
+        } else if (choice === 'rainy') {
+          para.textContent = 'rainy';
+        } else if (choice === 'snowing') {
+          para.textContent = 'snowing';
+        } else {
+          para.textContent = '';
+        }
+      }
+
+
+      // 三元运算符实例
+      const theme = document.getElementById('theme');
+      const html = document.querySelector('html');
+
+      function update(bgColor, textColor) {
+        html.style.backgroundColor = bgColor;
+        html.style.color = textColor;
+      }
+
+      theme.onchange = function() {
+        ( theme.value === 'white') ? update('white', 'black') : update('black', 'white');
+      }
+
+
+
+    </script>
+
+    <script>
+      const month = document.getElementById('month');
+      const showDay = document.querySelector('.show-day');
+      
+      createDay(31);
+
+      month.onchange = function() {
+        if (month.value === '2' ) {
+          createDay(28);
+        } else if (month.value === '4' || month.value === '6' || month.value === '9' || month.value === '11') {
+          createDay(30);
+        } else {
+          createDay(31);
+        }
+      }
+      
+      function createDay(sumDay){
+        showDay.innerHTML = '';
+        for (let i = 1; i <= sumDay; i++) {
+          let day = document.createElement('li');
+          day.textContent = i;
+          showDay.appendChild(day);
+        }
+      }
+
+    </script>
+
+    <script>
+      const moreTheme = document.getElementById('more-theme');
+    
+      moreTheme.onchange = function() {
+        let getTheme = moreTheme.value;
+
+        switch(getTheme) {
+          case 'white':
+            update('white', 'black');
+            break;
+          case 'black':
+            update('black', 'white');
+            break;
+          case 'green':
+            update('green', 'white');
+            break;
+        }
+      }
+
+    </script>
+
+  </body>
+</html>
