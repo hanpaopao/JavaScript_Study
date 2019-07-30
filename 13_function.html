@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>function</title>
+  </head>
+  <body>
+
+    <script>
+
+      // 函数内部的函数
+      function myBigFunction() {
+        let myValue = 1;
+
+        subFun1(myValue);
+        subFun2(myValue);
+        subFun3(myValue);
+
+      }
+
+      function subFun1(value) {
+        console.log(value);
+      }
+
+      function subFun2(value) {
+        console.log(value);
+      }
+
+      function subFun3(value) {
+        console.log(value);
+      }
+
+
+      // 和 scope 玩耍
+      let x = 1;
+
+      function a() {
+        let y = 2;
+      }
+
+      function b() {
+        let z = 3;
+        output(z);
+      }
+
+      function output(value) {
+        let para = document.createElement('p');
+        document.body.appendChild(para);
+        para.textContent = 'Value:' + value;
+      }
+
+
+      // 内置函数
+      // 字符串
+      let myTest = 'I am a string';
+      let newString = myTest.replace('string', 'newstr');
+      console.log(newString);
+      // 数组
+      let myArray = ['I', 'love', 'chocolate', 'frogs'];
+      let NewAToStr = myArray.join(' ');
+      console.log(NewAToStr);
+      // 产生一个随机数
+      let myNum = Math.random();
+      console.log(myNum);
+      // 函数与方法
+      // 自定义函数
+      // 调用函数
+      // 匿名函数
+      // 函数参数
+      // 函数作用域和冲突
+
+    </script>
+  </body>
+</html>
