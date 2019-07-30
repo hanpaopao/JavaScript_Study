@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>loop</title>
+  </head>
+  <body>
+
+    <label for="search"></label>
+    <input id="search" type="text" />
+    <button>search</button>
+
+    <p></p>
+
+    <div class="output"></div>
+
+    <div class="admit"></div>
+    <div class="refuse"></div>
+
+    <script>
+
+      // 启动倒计时
+      // let i = 10;
+      // const output = document.querySelector('.output');
+      // output.innerHTML = '';
+
+      // while (i >= 0) {
+      //   const para = document.createElement('p');
+
+      //   if ( i === 10 ) {
+      //     para.textContent = 'this is 10';
+      //   } else if ( i === 0) {
+      //     para.textContent = 'this is 0';
+      //   } else {
+      //     para.textContent = i;
+      //   }
+
+      //   output.appendChild(para);
+      //   i--;
+      // }
+
+      // 练习：填写来宾列表
+
+      let people = ['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff'];
+
+      const admit = document.querySelector('.admit');
+      const refuse = document.querySelector('.refuse');
+
+      let i = 0;
+      do {
+        if ( people[i] === 'bbb' || people[i] === 'ddd' ) {
+          refuse.textContent += people[i] + ',';
+        } else {
+          admit.textContent += people[i] + ',';
+        }
+        i++;
+      } while (i < people.length);
+
+      refuse.textContent = refuse.textContent.slice(0, refuse.textContent.length-2) + '.';
+
+      console.log(typeof refuse.textContent);
+
+
+
+      // let cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+      // let info = 'My cats are called';
+      // const input = document.querySelector('input');
+      // const button = document.querySelector('button');
+      // const para = document.querySelector('p');
+      // let contacts = ['Chris:2232322', 'Sarah:3453456', 'Bill:7654322', 'Mary:9998769', 'Dianne:9384975'];
+
+      // for (let i = 0; i < cats.length; i++) {
+
+      //   if (i === cats.length -1) {
+      //     info += cats[i] + '。';
+      //   } else {
+      //     info += cats[i] + '，';
+      //   }
+      // }
+
+      // para.textContent = info;
+
+      // bark
+      // button.addEventListener('click', function() {
+      //   let searchName = input.value;
+      //   input.value = '';
+      //   input.focus();
+      //   for (let i = 0; i < contacts.length; i++) {
+      //     let splitContact = contacts[i].split(':');
+      //     if (splitContact[0] === searchName) {
+      //       para.textContent = splitContact[0] + '----' + splitContact[1];
+      //       break;
+      //     } else {
+      //       para.textContent = 'contact not found';
+      //     }
+      //   }
+      // });
+
+      // continue
+      // button.addEventListener('click', function() {
+      //   let searchName = input.value;
+      //   input.value = '';
+      //   input.focus();
+      //   para.textContent = '';
+      //   for (let i = 1; i <= Number(searchName); i++) {
+      //     let sqRoot = Math.sqrt(i);
+      //     if (Math.floor(sqRoot) !== sqRoot) {
+      //       continue;
+      //     }
+      //     para.textContent += i + ',';
+      //   }
+      // })
+
+      // while
+      // let i = 0;
+      // info = '';
+      // while (i < cats.length) {
+        
+      //   if (i === cats.length - 1){
+      //     info += 'and' + cats[i] + '。';
+      //   } else {
+      //     info += cats[i] + '---';
+      //   }
+
+      //   para.textContent = info;
+      //   i++;
+      // }
+
+      // do ... while
+      // do {
+      //   if (i === cats.length - 1){
+      //     info += 'and' + cats[i] + '。';
+      //   } else {
+      //     info += cats[i] + '****';
+      //   }
+
+      //   para.textContent = info;
+      //   i++;
+      // } while (i < cats.length);
+
+      
+
+    </script>
+  </body>
+</html>
