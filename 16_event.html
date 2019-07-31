@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>event</title>
+    <style>
+      html, body, div {
+        padding: 0px;
+        margin: 0px;
+      }
+      div {
+        display: inline-block;
+        width: 150px;
+        height: 100px;
+        /* background-color: red; */
+      }
+      .hidden {
+        display: none;
+      }
+      .showing {
+        display: block;
+      }
+      #videoBox {
+        width: 500px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <button>change color</button>
+    <h1>事件对象</h1>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <form>
+      <div>
+        <label for="fname">first name：</label>
+        <input id="fname" type="text" />
+      </div>
+      <div>
+        <label for="lname">last name：</label>
+        <input id='lname' type="text" />
+      </div>
+      <div>
+        <input id="submit" type="submit" />
+      </div>
+    </form>
+    <p></p>
+
+    <!-- 事件冒泡及捕获 -->
+    <button class="display">display video</button>
+    <div id="videoBox" class="hidden">
+      <video>
+        <source src="public/video/rabbit320.mp4" type="video/mp4" />
+        <p>your browser doesn't support html5 video</p>
+      </video>
+    </div>
+
+    <script>
+
+      // 事件委托
+      document.body.addEventListener('click', function(e) {
+        e.target.style.backgroundColor = bgCol();
+      })
+
+      // 事件冒泡及捕获
+      const display = document.querySelector('.display');
+      const videoBox = document.getElementById('videoBox');
+      const video = document.querySelector('video');
+
+      display.onclick = function() {
+        videoBox.setAttribute('class', 'showing')
+      }
+
+      videoBox.onclick = function() {
+        videoBox.setAttribute('class', 'hidden')
+      }
+
+      video.onclick = function(e) {
+        e.stopPropagation();
+        video.play();
+      }
+
+      // 阻止默认行为
+      const form = document.querySelector('form');
+      const fname = document.getElementById('fname');
+      const lname = document.getElementById('lname');
+      const submit = document.getElementById('submit');
+      
+      let para = document.querySelector('p');
+
+      form.onsubmit = function(e) {
+        if (fname.value === '' || lname.value === '') {
+          e.preventDefault();
+          para.textContent = 'You need to fill in both names';
+        }
+      }
+
+
+      // 事件对象
+
+      const divs = document.querySelectorAll('div');
+      
+      // for (let i = 0; i < divs.length; i++) {
+      //   divs[i].onclick = function(e) {
+      //     e.target.style.backgroundColor = bgCol();
+      //   }
+      // }
+
+      function bgCol() {
+        return 'rgb(' + random(255) + ', ' + random(255) + ', ' + random(255) + ')';
+      }
+
+
+      const btn  = document.querySelector('button');
+
+      function random(number) {
+        return Math.floor(Math.random()*(number + 1));
+      }
+
+      function bgChange(e) {
+        let col = 'rgb(' + random(255) + ', ' + random(255) + ', ' + random(255) + ')';
+        e.target.style.backgroundColor = col;
+        console.log(e);
+      }
+
+      // 聚焦和解除焦点
+      // btn.onfocus = bgChange;
+      // btn.onblur = bgChange;
+      // 鼠标移入和移出
+      // btn.onmouseover = bgChange;
+      // btn.onmouseleave = bgChange;
+
+      // addEventListener()
+      btn.addEventListener('click', bgChange);
+      // removeEventListener()
+      // btn.removeEventListener('click', bgChange);
+
+      // addEventListener() 和 onclick 的比较
+
+      // function funA() {
+      //   console.log('funA');
+      // }
+
+      // function funB() {
+      //   console.log('funB');
+      // }
+
+      // btn.onclick = funA;
+      // btn.onclick = funB;
+
+      // btn.addEventListener('click', funA);
+      // btn.addEventListener('click', funB);
+
+    </script>
+  </body>
+</html>
