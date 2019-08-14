@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>oop</title>
+  </head>
+  <body>
+
+      <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+    <p>oop</p>
+
+    <script>
+      /**
+       * 定义对象
+       * 属性和方法
+       */
+      var person = {
+        name: ['Bob', 'Smith'],
+        age: 32,
+        gender: 'male',
+        intereste: ['music', 'skiing'],
+        bio: function() {
+          alert(this.name[0] + ' ' + this.name[1] + ' is ' + age);
+        },
+        greeting: function() {
+          alert('Hi I\'m ' + this.name[0]);
+        }
+      };
+
+      // 点表示法
+      console.log(person.name[0]);
+      // 括号表示法
+      console.log(person['age']);
+
+      // 设置对象成员
+      // 修改
+      person.age = 69;
+      console.log(person.age);
+      // 添加
+      person['eyes'] = 'hazel';
+      console.log(person['eyes']);
+      // 括号表示法，里面可以存放变量，点表示法，只能接受字面量的成员名字
+      // this 关键字 指向当前代码运行时的对象
+    </script>
+  </body>
+</html>
