@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>oop</title>
+  </head>
+  <body>
+
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+    <p>oop</p>
+
+    <script>
+      /**
+       * 构建函数
+       *
+       */
+      // 传统
+      function createNewPerson(name) {
+        var obj = {};
+        obj.name = name;
+        obj.greeting = function() {
+          alert('Hi! i\'m' + this.name);
+        }
+        return obj;
+      }
+
+      // 创建实例
+      var salva = createNewPerson('salva');
+      console.log(salva.name);
+      console.log(salva.greeting());
+
+      // 构建函数
+      // 构建函数 一般用大写字母开头
+      function Person(name) {
+        this.name = name;
+        this.greeting = function() {
+          alert('Hi! i\'m' + this.name);
+        }
+      }
+
+      // 创建实例
+      // new 跟 构建函数
+      var person1 = new Person('BOb');
+      var person2 = new Person('Sarah');
+
+      console.log(person1.name);
+      console.log(person2.name);
+
+    </script>
+  </body>
+</html>
