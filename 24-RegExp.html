@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24-RegExp</title>
+  </head>
+  <body>
+    <script>
+      // 字面量形式
+      const regexp1 = /.at/g;
+      // 构造函数形式 模式字符串和（可选）标记字符串
+      const regexp2 = new RegExp("at", "g");
+      // 实例方法
+      // exec 返回数组 index input
+      const str1 = "3333at, bt, dddda222t, eeee";
+      const execRes = regexp1.exec(str1);
+      console.log(execRes);
+      const execRes2 = regexp1.exec(str1);
+      console.log(execRes2);
+      const execRes3 = regexp1.exec(str1);
+      console.log(execRes3);
+      // test
+      const testRes = regexp2.test(str1);
+      console.log(testRes);
+      //
+      const regexpStr = regexp2.toString();
+      console.log(regexpStr);
+      const regexpVal = regexp2.valueOf();
+      console.log(regexpVal);
+    </script>
+  </body>
+</html>

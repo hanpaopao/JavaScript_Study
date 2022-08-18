@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>23-Date</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date();
+      console.log(now);
+
+      // 替他日期创建日期对象
+      // Date.parse()
+      // const date1 = new Date(Date.parse("2022-02-22T12:22:34"));
+      const date1 = new Date("2022-02-22T12:22:34");
+      console.log(date1);
+      // Date.UTC() 年和月是必须的 月从0开始
+      // const date2 = new Date(Date.UTC(2022, 3, 4, 12, 23, 44));
+      const date2 = new Date(2022, 3, 4, 12, 23, 44);
+      console.log(date2);
+      // 返回毫秒数
+      const date3 = Date.now();
+      console.log(date3);
+      console.log(now.toLocaleString());
+      console.log(now.toString());
+      // valueOf()
+      console.log(now.valueOf());
+    </script>
+  </body>
+</html>
